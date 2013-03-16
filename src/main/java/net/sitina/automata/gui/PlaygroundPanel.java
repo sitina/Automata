@@ -1,13 +1,10 @@
 package net.sitina.automata.gui;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-
-import javax.swing.JPanel;
-
 import net.sitina.automata.Cell;
 import net.sitina.automata.Playground;
+
+import javax.swing.*;
+import java.awt.*;
 
 
 public class PlaygroundPanel extends JPanel {
@@ -16,11 +13,14 @@ public class PlaygroundPanel extends JPanel {
 
 	private Playground playground = null;
 	
-	private static final int PIXEL_SIZE = 3;
+	private static final int PIXEL_SIZE = 5;
 	
-	public PlaygroundPanel(int x, int y, Class<? extends Cell> t) {
-		setPreferredSize(new Dimension(300, 300));
-		playground = new Playground(x, y, t);
+	public PlaygroundPanel(int x, int y, Class<? extends Cell> cellType) {
+        Dimension size = new Dimension(x * PIXEL_SIZE, y * PIXEL_SIZE);
+        setPreferredSize(size);
+        setSize(size);
+
+		playground = new Playground(x, y, cellType);
 	}
 	
 	@Override 
@@ -32,7 +32,7 @@ public class PlaygroundPanel extends JPanel {
         		
         		Cell cell = playground.getPlayground()[x][y];
         		
-        		if (cell != null) { // && cell.isChanged()) {
+        		if (cell != null && cell.isChanged()) {
 	        		if (cell.getState() == 0) {
 	        			g.setColor(Color.BLACK);
 	        		} else if (cell.getState() == 1) {
@@ -42,7 +42,7 @@ public class PlaygroundPanel extends JPanel {
 	        		}
 	        		
 	        		g.fillRect(PIXEL_SIZE * x, PIXEL_SIZE * y, PIXEL_SIZE, PIXEL_SIZE);
-        		}        		
+        		}
         	}
         }
     }

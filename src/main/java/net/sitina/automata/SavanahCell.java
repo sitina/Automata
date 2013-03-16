@@ -52,39 +52,31 @@ public class SavanahCell extends Cell {
 	private int getRoundScore() {
 		int score = 0;
 		
-		try {
-			score += left.getState();
-			score += right.getState();
-			score += top.getState();
-			score += bottom.getState();
-		} catch (NullPointerException e) {
-			System.err.println("Null pointer exception");
-		}
-		
+        score += (left != null) ? left.getState() : 0;
+        score += (right != null) ? right.getState() : 0;
+        score += (top != null) ? top.getState() : 0;
+        score += (bottom != null) ? bottom.getState() : 0;
+
 		return score;
 	}
 	
 	private boolean isFireNearby() {
-		try {
-			if (left.getState() == FIRE) {
-				return true;
-			}
-			
-			if (right.getState() == FIRE) {
-				return true;
-			}
-			
-			if (top.getState() == FIRE) {
-				return true;
-			}
-			
-			if (bottom.getState() == FIRE) {
-				return true;
-			}
-		} catch (NullPointerException e) {
-			System.err.println("Null pointer exception");
-		}
-		
+        if (left != null && left.getState() == FIRE) {
+            return true;
+        }
+
+        if (right != null && right.getState() == FIRE) {
+            return true;
+        }
+
+        if (top != null && top.getState() == FIRE) {
+            return true;
+        }
+
+        if (bottom != null && bottom.getState() == FIRE) {
+            return true;
+        }
+
 		return false;
 	}
 

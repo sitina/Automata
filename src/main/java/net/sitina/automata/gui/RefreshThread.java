@@ -4,7 +4,7 @@ public class RefreshThread extends Thread {
 
 	private Automata a;
 	
-	private int refreshInterval = 1000;
+	private int refreshInterval = 500;
 	
 	public RefreshThread(Automata a, int interval) {
 		this.a = a;
@@ -17,8 +17,8 @@ public class RefreshThread extends Thread {
 			try {
 				sleep(refreshInterval);
 			} catch (Exception e) {
-				
-			}
+                System.err.println(e.getMessage());
+            }
 		}
 	}
 	

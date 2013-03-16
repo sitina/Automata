@@ -10,7 +10,7 @@ public class Automata extends JFrame {
 
 	private static final long serialVersionUID = 5385200080671559943L;
 
-	private PlaygroundPanel panel = new PlaygroundPanel(100, 100, SavanahCell.class);
+	private PlaygroundPanel panel = new PlaygroundPanel(300, 300, SavanahCell.class);
 	
 	private RefreshThread refreshThread = new RefreshThread(this, 100);
 	
@@ -27,19 +27,17 @@ public class Automata extends JFrame {
         content.add(panel, BorderLayout.CENTER);
 		
         setContentPane(content);
-        
         setTitle("Automata");
+        pack();
+
         setLocationRelativeTo(null);
-        
-		pack();
-		
 		refreshThread.start();
 	}
 
 	@Override
 	public void repaint() {
 		panel.refresh();
-		super.repaint();
+		// super.repaint();
 	}	
 	
 }
