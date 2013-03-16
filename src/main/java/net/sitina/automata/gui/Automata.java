@@ -1,11 +1,9 @@
 package net.sitina.automata.gui;
 
-import java.awt.BorderLayout;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
 import net.sitina.automata.SavanahCell;
+
+import javax.swing.*;
+import java.awt.*;
 
 
 public class Automata extends JFrame {
